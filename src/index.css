@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kantumruy+Pro:ital,wght@0,300..700;1,300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Kantumruy Pro", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: #000000 !important;
+  }
+  body * {
+    visibility: hidden !important;
+  }
+  #invoice-pdf-render-root, #invoice-pdf-render-root * {
+    visibility: visible !important;
+    color: #000000 !important;
+    border-color: #d1d5db !important;
+  }
+  #invoice-pdf-render-root {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 2.5rem !important;
+    background: white !important;
+    z-index: 9999999 !important;
+    display: block !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

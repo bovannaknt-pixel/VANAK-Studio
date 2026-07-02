@@ -1,0 +1,10 @@
+{
+  "name": "Kunthy Watch Store Management Dashboard",
+  "description": "ប្រព័ន្ធគ្រប់គ្រងស្តុក ការលក់ ចំណូល ចំណាយ និងការព្យាករណ៍ឆ្លាតវៃ (AI) សម្រាប់ Kunthy Watch Store",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

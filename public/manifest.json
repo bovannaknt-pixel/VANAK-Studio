@@ -1,0 +1,37 @@
+{
+  "id": "/",
+  "short_name": "Kunthy Watch",
+  "name": "Kunthy Watch Store Management",
+  "description": "ប្រព័ន្ធគ្រប់គ្រងស្តុក ការលក់ ចំណូល ចំណាយ និងប្រាក់ដើម សម្រាប់ហាងលក់នាឡិកាដៃ Kunthy Watch Store",
+  "icons": [
+    {
+      "src": "/kunthy_logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/kunthy_logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/kunthy_logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/kunthy_logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#f59e0b",
+  "display": "standalone",
+  "orientation": "portrait"
+}

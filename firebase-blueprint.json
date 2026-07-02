@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "Watch": {
+      "title": "Watch",
+      "description": "Watch item in stock",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "color": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "sellPrice": { "type": "number" },
+        "stock": { "type": "number" }
+      },
+      "required": ["id", "brand", "model", "costPrice", "sellPrice", "stock"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Watch sale transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "watchId": { "type": "string" },
+        "watchModel": { "type": "string" },
+        "brand": { "type": "string" },
+        "color": { "type": "string" },
+        "quantity": { "type": "number" },
+        "costPrice": { "type": "number" },
+        "sellPrice": { "type": "number" },
+        "totalPrice": { "type": "number" },
+        "profit": { "type": "number" },
+        "date": { "type": "string" },
+        "seller": { "type": "string" }
+      },
+      "required": ["id", "watchId", "quantity", "costPrice", "sellPrice", "totalPrice", "date", "seller"]
+    },
+    "Income": {
+      "title": "Income",
+      "description": "Other income record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "amount": { "type": "number" },
+        "category": { "type": "string" },
+        "desc": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "amount", "category", "desc", "date"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Expense records for operations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "amount": { "type": "number" },
+        "category": { "type": "string" },
+        "desc": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "amount", "category", "desc", "date"]
+    },
+    "CapitalTransaction": {
+      "title": "CapitalTransaction",
+      "description": "Capital additions or withdrawals by owner",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string" },
+        "desc": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "amount", "type", "desc", "date"]
+    },
+    "ShopData": {
+      "title": "ShopData",
+      "description": "The complete shop data structure",
+      "type": "object",
+      "properties": {
+        "watches": { "type": "array" },
+        "sales": { "type": "array" },
+        "incomes": { "type": "array" },
+        "expenses": { "type": "array" },
+        "capitalTransactions": { "type": "array" }
+      }
+    }
+  },
+  "firestore": {
+    "/shop/{shopId}": {
+      "schema": "ShopData",
+      "description": "The main shop configuration and transaction data"
+    }
+  }
+}

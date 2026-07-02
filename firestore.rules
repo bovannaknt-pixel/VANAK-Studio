@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net (Pillar 1)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // Global validation helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+    
+    // 2. Specific Match Block for Shop Data (Pillar 2, 3)
+    match /shop/{shopId} {
+      // Allow single-document reads (get) but prevent list queries (Pillar 8)
+      allow get: if isValidId(shopId);
+      
+      // Allow creation/updates if ID is valid and payload matches expected shapes
+      allow write: if isValidId(shopId) && (
+        // Shape A: Standard JSON stringified wrapper (used by the server's REST API implementation)
+        (
+          request.resource.data.keys().hasAll(['json']) && 
+          request.resource.data.json is string && 
+          request.resource.data.json.size() <= 10485760
+        ) ||
+        // Shape B: Direct structured layout (aligned with firebase-blueprint.json)
+        (
+          request.resource.data.keys().hasAll(['watches', 'sales', 'incomes', 'expenses', 'capitalTransactions']) &&
+          request.resource.data.watches is list &&
+          request.resource.data.sales is list &&
+          request.resource.data.incomes is list &&
+          request.resource.data.expenses is list &&
+          request.resource.data.capitalTransactions is list
+        )
+      );
+    }
+  }
+}
